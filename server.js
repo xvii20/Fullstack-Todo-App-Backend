@@ -40,7 +40,7 @@ else{console.log("insert failed")}
 
 })
 
-app.get("/users", function (req,res){
+app.get("/", function (req,res){
    client.query(`Select * from users`, function (err, result){
    if (!err){
       console.log(result)
