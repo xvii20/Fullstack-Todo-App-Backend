@@ -41,15 +41,25 @@ else{console.log("insert failed")}
 
 })
 
-app.get("/users", function (req,res){
-   client.query(`Select * from users`, function (err, result){
+app.get("/users", async (req,res) => {
+
+try{const alldata = await client.query(`SELECT * FROM USERS`)
+console.log(alldata.rows)
+res.json(alldata.rows)
+console.log(res.json(alldata.rows))
+}
+catch(err){console.log(err)}
+
+
+
+ /*  client.query(`Select * from users`, function (err, result){
    if (!err){
       console.log(result.rows)
    res.send(result.rows)
    }
    else{res.send(err.message)}
    
-})
+}) */
 
    })
 
