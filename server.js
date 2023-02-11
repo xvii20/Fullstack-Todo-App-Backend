@@ -12,7 +12,7 @@ let app = express()
 app.use(express.json()) 
 
 const cors = require('cors');
-const { nextTick } = require("process")
+
 app.use(cors({
    origin: '*'
 })); 
@@ -41,7 +41,7 @@ else{console.log("insert failed")}
 
 })
 
-app.get("/users", async (req,res) => {
+app.get("/usersx", async (req,res) => {
 
 try{const alldata = await client.query(`SELECT * FROM USERS`)
 console.log(alldata.rows)
