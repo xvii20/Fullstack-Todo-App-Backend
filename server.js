@@ -54,6 +54,11 @@ console.log(path.join('/', 'users', name, 'notes.txt')) // '/users/joe/notes.txt
 let PORT = process.env.PORT || 5000;
 
 
-app.listen(PORT, function() {console.log(`server is running on ${PORT}`)})
+app.listen(PORT, function() {console.log(`server is running on ${PORT} hehe`)})
+
+
+
+
+
 
 
