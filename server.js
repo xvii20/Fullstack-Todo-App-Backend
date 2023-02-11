@@ -12,13 +12,14 @@ let app = express()
 app.use(express.json()) 
 
 const cors = require('cors');
+const { nextTick } = require("process")
 app.use(cors({
    origin: '*'
 })); 
 
 app.use("/", (req,res) =>{
 
-res.send("welcomeee!!!!!")
+res.send("wqqqq")
 
 })
 
@@ -40,10 +41,10 @@ else{console.log("insert failed")}
 
 })
 
-app.get("/", function (req,res){
+app.get("/users", function (req,res){
    client.query(`Select * from users`, function (err, result){
    if (!err){
-      console.log(result)
+      console.log(result.rows)
    res.send(result.rows)
    }
    else{res.send(err.message)}
