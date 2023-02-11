@@ -12,7 +12,7 @@ const client = new Client({
   port: 7940,
   password: "BdewPSrJ1bodLjjrwybP",
   database: "railway",
-  connectionString: "postgresql://postgres:BdewPSrJ1bodLjjrwybP@containers-us-west-190.railway.app:7940/railway"
+connectionString: "postgresql://postgres:BdewPSrJ1bodLjjrwybP@containers-us-west-190.railway.app:7940/railway"
 
  /*host:"localhost",
 user: "kkupop3",

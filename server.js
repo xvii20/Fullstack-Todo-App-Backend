@@ -17,9 +17,9 @@ app.use(cors({
    origin: '*'
 })); 
 
-app.use("/", (req,res) =>{
+app.get("/", (req,res) =>{
 
-res.send("wqqqq")
+res.send("qzu")
 
 })
 
