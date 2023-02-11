@@ -1,3 +1,6 @@
+
+/*
+
 const {Client} = require("pg")
 const { connect } = require("http2")
 const client = new Client({
@@ -6,7 +9,7 @@ const client = new Client({
 user: "kkupop3",
 port: 5432,
 // password: "3MuLIP7MZcRHM75LkQMY",
-/* sometimes u might have to include a password but for me no need */
+
 database: "kkupop3"
 })
 
@@ -23,4 +26,6 @@ else{console.log(err.message)}
 client.end;
 }) 
 
-module.exports = client
+module.exports = client 
+
+*/
