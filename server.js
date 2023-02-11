@@ -16,6 +16,12 @@ app.use(cors({
    origin: '*'
 })); 
 
+app.use("/", (req,res) =>{
+
+res.send("welcomeee!!!!!")
+
+})
+
 app.post("/users", function(req,res){
 
 console.log(req.body) // returns the data from the app.js file 
