@@ -1,7 +1,8 @@
 let client = require("./connection.js")
 let express = require("express")
+require("dotenv").config()
 
-
+const path = require('path')
 
 
 let app = express()
@@ -17,7 +18,7 @@ app.use(cors({
 
 app.post("/users", function(req,res){
 
-console.log(req.body) // returns the data from the app.js file {username:Beatrice,password:xfq566345gs}
+console.log(req.body) // returns the data from the app.js file 
 
 client.query(`insert into users (username,password) values('${req.body.username}','${req.body.password}')`
 , function(err,result){
@@ -45,7 +46,14 @@ app.get("/users", function (req,res){
 
    })
 
+/*
+const name = 'joe';
+console.log(path.join('/', 'users', name, 'notes.txt')) // '/users/joe/notes.txt'
+*/
+
 let PORT = process.env.PORT || 5000;
 
 
 app.listen(PORT, function() {console.log(`server is running on ${PORT}`)})
+
+
