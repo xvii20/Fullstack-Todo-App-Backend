@@ -18,7 +18,7 @@ const client = new Client({
   port: process.env.PGPORT,
   password: process.env.PGPASSWORD,
   database: process.env.PGDATABASE,
-connectionString: process.env.DATABASE_URL
+connectionString: "postgresql://postgres:BdewPSrJ1bodLjjrwybP@containers-us-west-190.railway.app:7940/railway"
 
  /*host:"localhost",
 user: "kkupop3",
