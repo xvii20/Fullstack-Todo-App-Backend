@@ -5,21 +5,13 @@ require("dotenv").config()
 
 
 const client = new Client({
-  
+
   host: process.env.PGHOST,
   user: process.env.PGUSER,
   port: process.env.PGPORT,
   password: process.env.PGPASSWORD,
   database: process.env.PGDATABASE,
 connectionString: `postgresql://${process.env.PGUSER}:${process.env.PGPASSWORD}@${process.env.PGHOST}:${process.env.PGPORT}/${process.env.PGDATABASE}`
-
-
-/*  DATABASE_URL=postgresql://postgres:BdewPSrJ1bodLjjrwybP@containers-us-west-190.railway.app:7940/railway
-PGDATABASE=railway
-PGHOST=containers-us-west-190.railway.app
-PGPASSWORD=BdewPSrJ1bodLjjrwybP
-PGPORT=7940
-PGUSER=postgres  */
 
 })
 
