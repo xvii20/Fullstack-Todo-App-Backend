@@ -26,10 +26,21 @@ res.send("qzu")
 })
 
 // Sending data to the Database...
-app.post("/users", function(req,res){
+app.post("/users", async function(req,res){
 
 console.log(req.body) // returns the second parameter from the axios.post request from the app.js file basically the objectword variable.
 
+try{
+await client.query(`insert into users (username,password) values(${req.body.username},${req.body.password})`)
+
+res.json("posting data to the database has been successful!")
+}
+
+catch(err){ console.log(err.message)
+
+}
+
+/*
 client.query(`insert into users (username,password) values('${req.body.username}','${req.body.password}')`
 , function(err,result){
 
@@ -41,10 +52,10 @@ if (!err){
 else{console.log("insert failed")}
 
 })
-
+*/
 })
 
-// Requesting Data From the Database...
+// Requesting Data From the Database...and then sending it back to the frontend, because axios did a get request to this endpoint
 app.get("/usersx", async (req,res) => {
 
 try{const alldata = await client.query(`SELECT * FROM USERS`)
@@ -66,6 +77,28 @@ catch(err){console.log(err)}
 }) */
 
    })
+
+
+// tomorrow make a delete response
+app.delete("/usersx/:id",async function(req,res) {
+
+try{
+let deleteuser = await client.query(`DELETE FROM users where id =${req.params.id}`)
+res.json("your account has been deleted")
+}
+
+catch(err){
+   console.log(err.message)
+}
+
+})
+
+
+
+//tomorrow make a put response
+
+
+
 
 
 let PORT = process.env.PORT || 5000;
