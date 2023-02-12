@@ -28,6 +28,7 @@ client.connect();
 client.query('select * from users',(err,res) => {
 if (!err){
   console.log(res.rows)
+  console.log(process.env.PGPASSWORD)
 }
 else{console.log(err.message)}
 
