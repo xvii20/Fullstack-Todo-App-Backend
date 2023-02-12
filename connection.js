@@ -11,7 +11,7 @@ const client = new Client({
   port: process.env.PGPORT,
   password: process.env.PGPASSWORD,
   database: process.env.PGDATABASE,
-  connectionString: process.env.DATA_URL
+  connectionString: process.env.DATA_URL    // define this DATA_URL in the variables section on railways.app
 })
 
 client.connect();
