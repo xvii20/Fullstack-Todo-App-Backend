@@ -23,9 +23,10 @@ res.send("qzu")
 
 })
 
+// Sending data to the Database...
 app.post("/users", function(req,res){
 
-console.log(req.body) // returns the data from the app.js file 
+console.log(req.body) // returns the second parameter from the axios.post request from the app.js file basically the objectword variable.
 
 client.query(`insert into users (username,password) values('${req.body.username}','${req.body.password}')`
 , function(err,result){
@@ -41,6 +42,7 @@ else{console.log("insert failed")}
 
 })
 
+// Requesting Data From the Database...
 app.get("/usersx", async (req,res) => {
 
 try{const alldata = await client.query(`SELECT * FROM USERS`)
