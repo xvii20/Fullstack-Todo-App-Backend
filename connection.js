@@ -11,8 +11,7 @@ const client = new Client({
   port: process.env.PGPORT,
   password: process.env.PGPASSWORD,
   database: process.env.PGDATABASE,
-  connectionString: `postgresql://${process.env.PGUSER}:${process.env.PGPASSWORD}@${process.env.PGHOST}:${parseInt(process.env.PGPORT)}/${process.env.PGDATABASE}`,
-
+  connectionString: process.env.DATA_URL
 })
 
 client.connect();
