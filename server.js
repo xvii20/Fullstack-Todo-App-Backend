@@ -67,10 +67,10 @@ catch(err){console.log(err)}
 
    })
 
-/*
-const name = 'joe';
-console.log(path.join('/', 'users', name, 'notes.txt')) // '/users/joe/notes.txt'
-*/
+
+const name = 'xi';
+console.log(path.join('/', 'users', name, "blue",'notes.txt')) // '/users/joe/notes.txt'
+
 
 let PORT = process.env.PORT || 5000;
 
@@ -83,3 +83,18 @@ app.listen(PORT, function() {console.log(`server is running on ${PORT} hehe`)})
 
 
 
+ /*host:"localhost",
+user: "kkupop3",
+port: 5432,
+// password: "3MuLIP7MZcRHM75LkQMY",
+database: "kkupop3" */
+
+
+ /*
+  host:"containers-us-west-190.railway.app",
+  user:"postgres",
+  port:7940,
+  password: BdewPSrJ1bodLjjrwybP,
+  database:railway,
+  connectionString: "postgresql://${process.env.PGUSER}:${process.env.PGPASSWORD}@${process.env.PGHOST}:${process.env.PGPORT}/${process.env.PGDATABASE}"
+  */
