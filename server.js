@@ -97,7 +97,14 @@ catch(err){
 
 
 //tomorrow make a put response
+app.put("/usersx/:id", async function (req,res){
+  
+   console.log(req.body)
+   console.log(req.body.username)
+   
+await client.query(`UPDATE users SET username = '${req.body.username}', password = '${req.body.password}', where id='${req.params.id}'`) 
 
+})
 
 
 
