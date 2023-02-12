@@ -31,9 +31,10 @@ app.post("/users", async function(req,res){
 console.log(req.body) // returns the second parameter from the axios.post request from the app.js file basically the objectword variable.
 
 try{
-await client.query(`insert into users (username,password) values(${req.body.username},${req.body.password})`)
+let postingdata = await client.query(`insert into users (username,password) values(${req.body.username},${req.body.password})`)
 
 res.json("posting data to the database has been successful!")
+console.log("sucesss for posting")
 }
 
 catch(err){ console.log(err.message)
