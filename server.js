@@ -114,6 +114,7 @@ app.put("/usersx/:id", async (req,res) => {
    
 let done = await client.query(`UPDATE users SET username = '${req.body.username}', password = '${req.body.password}' WHERE id=${req.params.id}`) 
 console.log("successfully updated your entry")
+XMLHttpRequest.abort() 
 })
 
 
