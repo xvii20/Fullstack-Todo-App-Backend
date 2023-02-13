@@ -1,22 +1,21 @@
 let client = require("./connection.js")
 let express = require("express")
 require("dotenv").config()
-
+const cors = require('cors');
 const path = require('path')
 
 
 let app = express()
+/*
+app.use(cors({
+   origin: '*',
+   credentials: true,
+})); */
+ app.use(cors());
 
 
  app.use(express.urlencoded({ extended: true }));
 app.use(express.json()) 
-
-const cors = require('cors');
-
-app.use(cors({
-   origin: '*'
-})); 
-
 
 
 app.get("/", (req,res) =>{
@@ -97,13 +96,24 @@ catch(err){
 
 
 //tomorrow make a put response
-app.put("/usersx/:id", async function (req,res){
+app.put("/usersx/:id", async (req,res) => {
   
+
+  //  res.header("Access-Control-Allow-Origin", "true");
+
+  // this is needed to bypass cors error  res.header
+ // res.header("Access-Control-Allow-Origin", "*");
+  const headers = {
+   'Content-Type': 'application/json',
+   'Access-Control-Allow-Origin': '*',
+   'Access-Control-Allow-Methods': '*',
+   'Access-Control-Allow-Headers': '*'
+}
    console.log(req.body)
    console.log(req.body.username)
    
-await client.query(`UPDATE users SET username = '${req.body.username}', password = '${req.body.password}', where id='${req.params.id}'`) 
-
+let done = await client.query(`UPDATE users SET username = '${req.body.username}', password = '${req.body.password}' WHERE id=${req.params.id}`) 
+console.log("successfully updated your entry")
 })
 
 
