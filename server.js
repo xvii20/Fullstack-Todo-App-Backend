@@ -11,70 +11,12 @@ const {v4: uuidv4} = require("uuid")
 
 let app = express()
 
-/* app.use(cors({
-   origin: '*',
-   credentials: true,
-}));  */
-
 app.use(cors());
 
  app.use(express.urlencoded({ extended: true }));
 app.use(express.json()) // allows you to access req.body from the client side because it parses JSON
 
 
-
-app.get("/", (req,res) =>{
-
-res.send("qzu")
-
-})
-
-
-/*
-// Sending data to the Database...
-app.post("/users", async function (req,res){
-
-   const saltRound = 10;
-
- // this code generates a random salt
- const salt = await bcrypt.genSalt(saltRound);
-   const bcryptpassword =  await bcrypt.hash(req.body.password, salt) 
-
-console.log(req.body) // returns the second parameter from the axios.post request from the app.js file basically the objectword variable.
-
-try{
-let postingdata = await client.query(`insert into users (username,password) values('${req.body.username}','${bcryptpassword}')`)
-
-// res.json(postingdata.rows[0])
-console.log("sucesss for posting")
-
-
-const token = jwtgenerator(postingdata.rows.id)
- console.log(token) 
-res.json({token})   
-
-}
-
-catch(err){ console.log(err.message)
-
-}
-
-/*
-client.query(`insert into users (username,password) values('${req.body.username}','${req.body.password}')`
-, function(err,result){
-
-if (!err){
-
-   res.send("insert successful")
-
-}
-else{console.log("insert failed")}
-
-})
-
-}) */
-let x = ""
-console.log(x == false) // returns true
 
 // Login code  IF YOU WANT TO CHECK FOR a USER in the database based on user input (aka the request body), you need to do a post request
 app.post("/login", async (req,res) => {
@@ -116,89 +58,12 @@ console.log("failed")
 
 })
 
-let zu = "helllo world"
-console.log(zu.split(""))
-
-// Requesting Data From the Database...and then sending it back to the frontend, because axios did a get request to this endpoint
-app.get("/usersx", async (req,res) => {
-
-try{const alldata = await client.query(`SELECT * FROM USERS`)
-console.log(alldata.rows)
- res.json(alldata.rows)
-console.log(req.headers)
-}
-catch(err){console.log(err)}
-
-
-
- /*  client.query(`Select * from users`, function (err, result){
-   if (!err){
-      console.log(result.rows)
-   res.send(result.rows)
-   }
-   else{res.send(err.message)}
-   
-}) */
-
-   })
-
-
-// tomorrow make a delete response
-app.delete("/usersx/:id",async function(req,res) {
-
-try{
-let deleteuser = await client.query(`DELETE FROM users where id =${req.params.id}`)
-res.json("your account has been deleted")
-}
-
-catch(err){
-   console.log(err.message)
-}
-
-})
-
-
-
-//tomorrow make a put response
-app.put("/usersx/:id", async (req,res) => {
-  
-// cross-origin:true
-  //  res.header("Access-Control-Allow-Origin", "true");
-
-  // this is needed to bypass cors error  res.header
- // res.header("Access-Control-Allow-Origin", "*");
-  const headers = {
-   'Content-Type': 'application/json',
-   'Access-Control-Allow-Origin': '*',
-   'Access-Control-Allow-Methods': '*',
-   'Access-Control-Allow-Headers': '*'
-}
-
-   
-let done = await client.query(`UPDATE users SET username = '${req.body.username}', password = '${req.body.password}' WHERE id=${req.params.id}`) 
-console.log("successfully updated your entry")
-XMLHttpRequest.abort()  // cancels all pending https requests if it has already been snt
-})
-
 
 // loginwith google account
 app.post("/signupwithaccount", async (req,res) => {
 
-// try to implement this,  if this value exist in data base,  use app.get and fetch the users game info from another table
-// if (req.body.guid)
-// else execute this code below
-try{  // console.log(req.body) // returns { guid: 'qn412HmjeKaUcXKeJ4nNbLSlvOf1' }
-  /*
-   let response = await client.query(`SELECT * FROM guids WHERE guid = '${req.body.guid}'`) // this should always return 1 entry so we can use response.rows[0] to get the right data
+try{  
 
-   // TODO After eating: experiment without this code below  because remember we have a unique constraint  the try it out with facebook see if the uid is same with google. also remember res.json is used to send data to the frontend. u need to use this so the frontend can display the data on the screen
-   if (response.rows[0].guid == req.body.guid){console.log("user already exists in database")
-   console.log(req.body.guid)
-}  */
-   
-   // console.log(response.rows[0].guid) // returns qn412HmjeKaUcXKeJ4nNbLSlvOf1
-  //  console.log(req.body.guid) // returns qn412HmjeKaUcXKeJ4nNbLSlvOf1
-// username is email
    let postingdata = await client.query(`insert into guids (email,password) values('${req.body.email}','${req.body.password}')`)
 console.log(postingdata) 
 res.json(postingdata)
@@ -212,7 +77,7 @@ catch(error){ console.log(error)}
 app.post("/todos", async (req,res) => {
 
 let uuid = uuidv4()  // this allows to generate a random uuid. we can name this variable anything you want it does not have to be named uuid
-console.log(req.body)
+// console.log(req.body)
 
 try{
 
