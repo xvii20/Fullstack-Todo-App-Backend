@@ -39,15 +39,15 @@ console.log(validpassword) // returns a boolean true or false depending on wheth
 
 // this if the validpassword is true, then use the JSON webtoken generator in this if statement so that way when login is successful, users will have a jwttoken
 if (validpassword){
-   console.log("login successful!!!")
+   console.log("login successful")
 const token = jwtgenerator(response.rows[0].id)
 console.log(response.rows[0].id)  // returns 56
 console.log(token)
 res.json({token})
 }
 
-else {console.log("login failed!!!")
-res.status(401).json("login failed!!!!!")}
+else {
+res.status(401).json("login failed")}
 
 }
 catch(err){
